@@ -110,6 +110,7 @@ SSH into the control node and follow the steps below:
 
 [elkservers]
 10.2.0.5 ansible_python_interpreter=/usr/bin/python3
+```
 
 - Update the Ansible configuration file `/etc/ansible/ansible.cfg` and set the remote_user parameter to the admin user of the web servers.
 
