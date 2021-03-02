@@ -139,4 +139,10 @@ _Here are commands the user will need to run to download the playbook, update th
 	* `ansible-playbook /etc/ansible/roles/filebeat-playbook.yml`
 	* `ansible-playbook /etc/ansible/roles/metricbeat-playbook.yml`
 
+- Below are displayed images of successful connection to kibana:
+
+![ Kibana Home ](Images/kibanahomescreen.png)
+
+![ Kibana Home ](Images/kibanadashboard.png)
+
 
