@@ -117,6 +117,26 @@ SSH into the control node and follow the steps below:
 
 - Update the Ansible configuration file `/etc/ansible/ansible.cfg` and set the remote_user parameter to the admin user of the web servers.
 
-- Run the playbook, and navigate to http://[your_elk_server_ip]:5601/app/kibana to check that the installation worked as expected.
+- Run the playbook, and navigate to http://[your_elk_server_public_ip]:5601/app/kibana to check that the installation worked as expected.
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+_Here are commands the user will need to run to download the playbook, update the files, etc._
+
+1. ssh into the Jump Box `ssh azurered@<Jump Box Public IP>`
+2. List available Docker containers `sudo docker container list -a`
+3. Start the Docker container `sudo docker start <Docker Container>`
+4. Attach to the Docker container with the command `sudo docker attach <Ansible Container Name>`
+5. Make sure the configuration files are configured properly:
+	* `/etc/ansible/ansible.cfg`
+	* `/etc/ansible/hosts`
+	* `/etc/ansible/files/filebeat-config.yml`
+	* `/etc/ansible/files/metricbeat-config.yml`
+	Do not forget to curl these two files prior to setup:
+	* `curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/filebeat-config.yml`
+	* `curl https://gist.githubusercontent.com/slape/58541585cc1886d2e26cd8be557ce04c/raw/0ce2c7e744c54513616966affb5e9d96f5e12f73/metricbeat > /etc/ansible/metricbeat-config.yml`
+6. Run the playbooks with the following commands:
+	* `ansible-playbook /etc/ansible/pentest.yml`
+	* `ansible-playbook /etc/ansible/install-elk.yml`
+	* `ansible-playbook /etc/ansible/roles/filebeat-playbook.yml`
+	* `ansible-playbook /etc/ansible/roles/metricbeat-playbook.yml`
+
+
